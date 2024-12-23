@@ -121,19 +121,15 @@ const employed = persons.filter((person) => !person.profession).length;
 // console.log(employed);
 
 // 2. How many people own a car?
-const carOwn = persons.filter((person) => person.vehicles).length;
-// console.log(carOwn);
+const carOwners = persons.filter((person) => person.vehicles).length;
+// console.log(carOwners);
 
 // 3. How many pets are fully vaccinated?
-const isVaccinated = (pets) => pets.every((pet) => pet.vaccinted);
-const vaccinatedPets = persons.reduce(
-  (count, person) => (isVaccinated(person.pets) ? count + 1 : count),
-  0
-);
-// console.log(vaccinatedPets);
+const allPets = persons.flatMap((person) => person.pets);
+const vaccinatedPets = allPets.filter((pet) => pet.vaccinted).length;
+console.log(vaccinatedPets);
 
 // 4. What are the names of all the pets, and what type of animal is each?
-const allPets = persons.map((person) => person.pets).flat();
 const petNamesAndType = allPets.map((pet) => [pet.name, pet.type]);
 // console.log(petNamesAndType);
 
