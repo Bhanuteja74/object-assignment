@@ -8,16 +8,16 @@ const persons = [
     skills: ["graphic design"],
     hobbies: [
       { name: " Games", interest: ["chess"] },
-      { name: "Gardening", interest: [] },
-      { name: "trips", interest: [] },
+      { name: "Gardening", interest: null },
+      { name: "trips", interest: null },
     ],
     pets: [
       {
         type: "dog",
-        bread: "golden retriever",
+        breed: "golden retriever",
         name: "Max",
         age: 4,
-        vaccinted: true,
+        vaccinated: true,
         activities: ["loves playing fetch in the park"],
       },
     ],
@@ -35,18 +35,18 @@ const persons = [
       {
         type: "parrot",
         name: "Kiwi",
-        bread: 0,
+        breed: null,
         age: 3,
-        vaccinted: true,
+        vaccinated: true,
         activities: ["mimics her voice"],
       },
     ],
-    vehicles: false,
+    vehicles: null,
   },
   {
     name: "Ramesh",
     age: 45,
-    studied: false,
+    studied: null,
     profession: "Business Owner",
     place: "Jaipur",
     skills: [],
@@ -58,27 +58,27 @@ const persons = [
       {
         type: "cat",
         name: "Belli",
-        bread: "Persian",
+        breed: "Persian",
         age: 3,
-        vaccinted: true,
+        vaccinated: true,
         activities: ["love lounging in the sun"],
       },
       {
         type: "cat",
         name: "Leo",
-        bread: "Persian",
+        breed: "Persian",
         age: 3,
-        vaccinted: true,
+        vaccinated: true,
         activities: ["love lounging in the sun"],
       },
     ],
-    vehicles: false,
+    vehicles: null,
   },
   {
     name: "Kavya",
     age: 28,
-    studied: false,
-    profession: false,
+    studied: null,
+    profession: null,
     place: "Chennai",
     skills: ["professional dancer"],
     hobbies: [
@@ -87,15 +87,15 @@ const persons = [
     ],
     pets: [
       {
-        type: "Rabbit",
+        type: "rabbit",
         name: "Snowy",
-        bread: 0,
+        breed: null,
         age: 2,
-        vaccinted: true,
+        vaccinated: true,
         activities: ["hopping around her backyard", "nibbling on carrots"],
       },
     ],
-    vehicles: false,
+    vehicles: null,
   },
 ];
 
@@ -117,7 +117,7 @@ const display = (attribute) => {
 // display("vehicles");
 
 // 1. How many individuals are currently employed?
-const employed = persons.filter((person) => !person.profession).length;
+const employed = persons.filter((person) => person.profession).length;
 // console.log(employed);
 
 // 2. How many people own a car?
@@ -126,7 +126,7 @@ const carOwners = persons.filter((person) => person.vehicles).length;
 
 // 3. How many pets are fully vaccinated?
 const allPets = persons.flatMap((person) => person.pets);
-const vaccinatedPets = allPets.filter((pet) => pet.vaccinted).length;
+const vaccinatedPets = allPets.filter((pet) => pet.vaccintaed).length;
 // console.log(vaccinatedPets);
 
 // 4. What are the names of all the pets, and what type of animal is each?
@@ -215,7 +215,7 @@ const petTypesFreq = petTypes.map((pet) => [
     (count, petCompare) => (pet === petCompare ? count + 1 : count),
     0
   ),
-]);
+]); //use forEach
 petTypesFreq.sort((pet1, pet2) => pet1[1] - pet2[1]);
 const commonPet = petTypesFreq.at(-1)[0];
 // console.log(commonPet);
