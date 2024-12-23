@@ -117,17 +117,11 @@ const display = (attribute) => {
 // display("vehicles");
 
 // 1. How many individuals are currently employed?
-const employed = persons.reduce(
-  (count, person) => (person.profession ? count + 1 : count),
-  0
-);
+const employed = persons.filter((person) => !person.profession).length;
 // console.log(employed);
 
 // 2. How many people own a car?
-const carOwn = persons.reduce(
-  (count, person) => (person.vehicles ? count + 1 : count),
-  0
-);
+const carOwn = persons.filter((person) => person.vehicles).length;
 // console.log(carOwn);
 
 // 3. How many pets are fully vaccinated?
@@ -233,7 +227,7 @@ const sharingWith = persons.filter((person) =>
 // 17. Which pet is the youngest, and what is its name?
 const minAge = Math.min(...allPets.map((pet) => pet.age));
 const youngestPet = allPets.find((pet) => pet.age === minAge).name;
-console.log(youngestPet);
+// console.log(youngestPet);
 
 // 18. What types of books are mentioned as interests, and who reads them?
 const isPersonReading = (hobbies) =>
