@@ -177,30 +177,35 @@ const csStudiedPeopleHavingPets = persons.filter(
 // console.log(csStudiedPeopleHavingPets);
 
 // 10. How many individuals own more than one pet?
-const morePetsPeople = persons
-  .filter((person) => person.pets.length > 1)
-  .map((person) => person.name);
-// console.log(morePetsPeople);
+const moreThanOnePetPeople = persons.filter(
+  (person) => person.pets.length > 1
+).length;
+// console.log(moreThanOnePetPeople);
 
 // 11. Which pets are associated with specific favorite activities?
-const petsAndActivities = allPets.map((pet) => [pet.name, pet.activities]);
+const petsAndActivities = allPets.map((pet) => {
+  return { name: pet.name, activities: pet.activities };
+});
 // console.log(petsAndActivities);
 
 // 12. What are the names of all animals that belong to people who live in Bangalore or Chennai?
-const bangaloreOrChennai = persons.filter((person) =>
+const kbcAndChePeople = persons.filter((person) =>
   ["Bengaluru", "Chennai"].includes(person.place)
 );
-const bangaloreOrChennaiPets = bangaloreOrChennai.map((person) => person.pets);
-const namesOfPets = bangaloreOrChennaiPets
-  .map((pets) => pets.map((pet) => pet.name))
-  .flat();
-// console.log(namesOfPets);
+const kbcAndChePeoplePets = kbcAndChePeople.map((person) => {
+  return {
+    person: person.name,
+    petNames: person.pets.flatMap((pet) => pet.name),
+  };
+});
+// console.log(kbcAndChePeoplePets);
 
 // 13. How many vaccinated pets belong to people who do not own a car?
-const personDoesNotOwnCar = persons
-  .filter((person) => person.vehicles)
-  .filter((person) => person.pets.every((pet) => pet.vaccinted));
-// console.log(personDoesNotOwnCar);
+const nonCarOwners = persons.filter((person) => person.vehicles);
+const nonCarOwnersVaccinatedPets = nonCarOwners.filter((person) =>
+  person.pets.every((pet) => pet.vaccinted)
+).length;
+// console.log(nonCarOwnersVaccinatedPets);
 
 // 14. What is the most common type of pet among the group?
 const petTypes = allPets.map((pet) => pet.type);
@@ -241,7 +246,6 @@ const youngestPet = allPets.find((pet) => pet.age === minAge).name;
 const isPersonReading = (hobbies) =>
   hobbies.some((hobby) => hobby.name === "reading");
 const readers = persons.filter((person) => isPersonReading(person.hobbies));
-
 const getBooks = (hobbies) =>
   hobbies
     .filter((hobby) => hobby.name === "reading")
@@ -254,9 +258,9 @@ const readersInterestIn = readers.map((reader) => [
 // console.log(readersInterestIn);
 
 // 19. How many individuals live in cities starting with the letter "B"?
-const personPlaceStartsWithB = persons
-  .filter((person) => person.place.at(0) === "B")
-  .map((person) => person.name);
+const personPlaceStartsWithB = persons.filter(
+  (person) => person.place.at(0) === "B"
+).length;
 // console.log(personPlaceStartsWithB);
 
 // 20. Which individuals do not own any pets?
