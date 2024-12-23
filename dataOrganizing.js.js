@@ -165,13 +165,16 @@ const averageAge = sumOfAges / persons.length;
 // console.log(averageAge);
 
 // 9. How many individuals have studied computer science, and how many of them have pets?
-const studiedCSHavingPets = persons
-  .filter(
-    (person) =>
-      person.studied === "Computer Science" && person.pets.length !== 0
-  )
-  .map((person) => person.name);
-// console.log(studiedCSHavingPets);
+// const csStudiedPeople = persons.filter(
+//   (person) => person.studied === "Computer Science"
+// );
+// const csStudiedPeopleHavingPets = csStudiedPeople.filter(
+//   (person) => person.pets.length !== 0
+// ).length;
+const csStudiedPeopleHavingPets = persons.filter(
+  (person) => person.studied === "Computer Science" && person.pets.length !== 0
+).length;
+// console.log(csStudiedPeopleHavingPets);
 
 // 10. How many individuals own more than one pet?
 const morePetsPeople = persons
