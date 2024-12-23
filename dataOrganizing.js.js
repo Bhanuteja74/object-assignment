@@ -127,15 +127,20 @@ const carOwners = persons.filter((person) => person.vehicles).length;
 // 3. How many pets are fully vaccinated?
 const allPets = persons.flatMap((person) => person.pets);
 const vaccinatedPets = allPets.filter((pet) => pet.vaccinted).length;
-console.log(vaccinatedPets);
+// console.log(vaccinatedPets);
 
 // 4. What are the names of all the pets, and what type of animal is each?
-const petNamesAndType = allPets.map((pet) => [pet.name, pet.type]);
-// console.log(petNamesAndType);
+const petNamesAndTypes = allPets.map((pet) => {
+  return { name: pet.name, type: pet.type };
+});
+// console.log(petNamesAndTypes);
 
 // 5. Which cities do the individuals live in?
-const cities = persons.map((person) => [person.name, person.place]);
-// console.log(cities);
+// const cities = persons.map((person) => [person.name, person.place]);
+const cities = persons.map((person) => {
+  return { name: person.name, place: person.place };
+});
+console.log(cities);
 
 // 6. How many hobbies are shared across the group? What are they?
 const getHobbies = (hobbies) => hobbies.map((hobby) => hobby.name);
