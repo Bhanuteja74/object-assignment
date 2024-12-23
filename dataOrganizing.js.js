@@ -140,20 +140,24 @@ const petNamesAndTypes = allPets.map((pet) => {
 const cities = persons.map((person) => {
   return { name: person.name, place: person.place };
 });
-console.log(cities);
+// console.log(cities);
 
 // 6. How many hobbies are shared across the group? What are they?
 const getHobbies = (hobbies) => hobbies.map((hobby) => hobby.name);
-const AllHobbies = persons.map((person) => [
-  person.name,
-  getHobbies(person.hobbies),
-]);
-// console.log(AllHobbies);
+const peopleHobbies = persons.map((person) => {
+  return {
+    name: person.name,
+    hobbies: person.hobbies.map((hobby) => hobby.name),
+  };
+});
+// console.log(peopleHobbies);
 
 // 7. How many pets belong to people who are currently unemployed?
 const unEmployed = persons.filter((person) => !person.profession);
-const petCount = unEmployed.map((person) => [person.name, person.pets.length]);
-// console.log(petCount);
+const unEmployedPeoplePets = unEmployed.map((person) => {
+  return { person: person.name, petCount: person.pets.length };
+});
+// console.log(unEmployedPeoplePets);
 
 // 8. What is the average age of the individuals mentioned in the passage?
 const sumOfAges = persons.reduce((total, person) => total + person.age, 0);
