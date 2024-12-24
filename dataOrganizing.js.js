@@ -99,50 +99,22 @@ const persons = [
   },
 ];
 
-const display = (attribute) => {
-  console.log("---", attribute, "----");
-  persons.forEach((person) => {
-    console.log(person[attribute]);
-  });
-};
-
-// display("name");
-// display("age");
-// display("studied");
-// display("profession");
-// display("place");
-// display("skills");
-// display("hobbies");
-// display("pets");
-// display("vehicles");
-
-// 1. How many individuals are currently employed?
 const employed = persons.filter((person) => person.profession).length;
-// console.log(employed);
 
-// 2. How many people own a car?
 const carOwners = persons.filter((person) => person.vehicles).length;
-// console.log(carOwners);
 
-// 3. How many pets are fully vaccinated?
 const allPets = persons.flatMap((person) => person.pets);
 const vaccinatedPets = allPets.filter((pet) => pet.vaccintaed).length;
-// console.log(vaccinatedPets);
 
-// 4. What are the names of all the pets, and what type of animal is each?
 const petNamesAndTypes = allPets.map((pet) => {
   return { name: pet.name, type: pet.type };
 });
-// console.log(petNamesAndTypes);
 
-// 5. Which cities do the individuals live in?
 // const cities = persons.map((person) => [person.name, person.place]);
 const cities = persons.map((person) => {
   return { name: person.name, place: person.place };
 });
-// console.log(cities);
 
-// 6. How many hobbies are shared across the group? What are they?
 const getHobbies = (hobbies) => hobbies.map((hobby) => hobby.name);
 const peopleHobbies = persons.map((person) => {
   return {
@@ -150,7 +122,6 @@ const peopleHobbies = persons.map((person) => {
     hobbies: person.hobbies.map((hobby) => hobby.name),
   };
 });
-// console.log(peopleHobbies);
 
 // 7. How many pets belong to people who are currently unemployed?
 const unEmployed = persons.filter((person) => !person.profession);
@@ -203,7 +174,7 @@ const kbcAndChePeoplePets = kbcAndChePeople.map((person) => {
 // 13. How many vaccinated pets belong to people who do not own a car?
 const nonCarOwners = persons.filter((person) => person.vehicles);
 const nonCarOwnersVaccinatedPets = nonCarOwners.filter((person) =>
-  person.pets.every((pet) => pet.vaccinted)
+  person.pets.every((pet) => pet.vaccinated)
 ).length;
 // console.log(nonCarOwnersVaccinatedPets);
 
@@ -268,3 +239,10 @@ const personHaveNotPet = persons
   .filter((person) => person.pets.length === 0)
   .map((person) => person.name);
 // console.log(personHaveNotPet);
+
+// console.log(employed);
+// console.log(carOwners);
+// console.log(vaccinatedPets);
+// console.log(petNamesAndTypes);
+// console.log(cities);
+// console.log(peopleHobbies);
